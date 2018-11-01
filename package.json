@@ -1,0 +1,10 @@
+{
+  "name": "BuyMeADrink",
+  "version": "1.0.0",
+  "description": "Idea By Chris Ellison; simple application to meet local singles within the closest vicinity to your current location.",
+  "main": "index.js",
+  "repository": "https://github.com/CatalanoWebDevelopment/BuyMeADrinkServer.git",
+  "author": "Parker Catalano",
+  "license": "MIT",
+  "private": false
+}
