@@ -6,8 +6,7 @@ export interface UserLocationDoc extends BaseDoc {
 }
 
 export default function(sequelize, DataTypes) {
-    return sequelize.define("admin", {
-        name: DataTypes.STRING,
-        password: DataTypes.STRING
+    return sequelize.define("userLocation", {
+        
     })
 }

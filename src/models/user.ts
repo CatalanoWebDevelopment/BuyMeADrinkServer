@@ -15,9 +15,11 @@ export interface UserDoc extends BaseDoc {
     lastName: string;
     email: string;
     password: string;
-    men: boolean;
-    Women: boolean;
-    adminId: number;
+    gender: Gender;
+    interestedIn: InterestedIn;
+    description: string;
+    profilePicture: Blob;
+    admin: boolean;
 }
 
 export default function(sequelize, DataTypes) {
