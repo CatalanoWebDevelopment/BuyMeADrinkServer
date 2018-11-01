@@ -75,3 +75,5 @@ class LocationService {
 		return updatedLocation;
 	}
 }
+
+export const locationController = new LocationService();
