@@ -6,33 +6,18 @@ export interface BaseDoc {
 	updatedAt: Date;
 }
 
-const AdminModel = sequelize.import("./models/admin");
 const UserModel = sequelize.import("./models/user");
 const LocationModel = sequelize.import("./models/location");
 const MessageModel = sequelize.import("./models/message");
 const UserLocationModel = sequelize.import("./models/userLocation");
 const UserMessageModel = sequelize.import("./models/userMessage");
 
-AdminModel.hasMany(UserModel);
-AdminModel.hasMany(LocationModel);
-AdminModel.hasMany(MessageModel);
+UserModel.hasMany(MessageModel);
+MessageModel.belongsToMany(UserModel, { through: UserMessageModel });
 
-UserModel.belongsTo(AdminModel);
-LocationModel.belongsTo(AdminModel);
-MessageModel.belongsTo(AdminModel);
+UserModel.hasOne(LocationModel)
+LocationModel.belongsToMany(UserModel, {through: UserLocationModel})
 
-UserModel.hasMany(UserMessageModel);
-UserMessageModel.belongsTo(UserModel);
-
-MessageModel.hasMany(UserMessageModel);
-UserMessageModel.belongsTo(MessageModel);
-
-UserModel.hasMany(UserLocationModel);
-UserLocationModel.belongsTo(UserModel);
-
-LocationModel.hasMany(UserLocationModel);
-UserLocationModel.belongsTo(LocationModel);
-
-sequelize.sync().then(() => {
+sequelize.sync({ force: true }).then(() => {
 	console.log(`Database & tables created!`);
 });

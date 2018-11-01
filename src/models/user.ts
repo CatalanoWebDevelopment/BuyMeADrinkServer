@@ -5,6 +5,11 @@ export enum InterestedIn {
     Women = "women"
 }
 
+export enum Gender {
+    Male = "male",
+    Female = "female"
+}
+
 export interface UserDoc extends BaseDoc {
     firstName: string;
     lastName: string;
@@ -20,11 +25,14 @@ export default function(sequelize, DataTypes) {
         firstName: DataTypes.STRING,
         lastName: DataTypes.STRING,
         email: DataTypes.STRING,
-        men: DataTypes.BOOLEAN,
-        Women: DataTypes.BOOLEAN,
+        gender: {
+            type: DataTypes.ENUM,
+            values: ["male", "female"]
+        },
         description: DataTypes.STRING,
         password: DataTypes.STRING,
         profilePicture: DataTypes.BLOB,
+        admin: DataTypes.BOOLEAN,
         interestedIn: {
             type: DataTypes.ENUM,
             values: ["men", "women"]
