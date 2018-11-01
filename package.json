@@ -1,5 +1,5 @@
 {
-  "name": "BuyMeADrink",
+  "name": "buy_me_a_drink",
   "version": "1.0.0",
   "description": "Idea By Chris Ellison; simple application to meet local singles within the closest vicinity to your current location.",
   "main": "index.js",
