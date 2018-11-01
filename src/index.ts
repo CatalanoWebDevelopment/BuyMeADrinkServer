@@ -8,7 +8,7 @@ import bodyParser from "koa-bodyparser";
 import { errorHandler } from "./middleware/errorHandling";
 import { userRouter } from "./routes/userRoutes";
 import { locationRouter } from "./routes/locationRoutes";
-// Import Objects for Route Calling
+import { messageRouter } from "./routes/messageRoutes";
 
 const app = new Koa();
 
@@ -42,7 +42,8 @@ const router = new Router();
 
 // Add Routers
 router.use("/user", userRouter.routes());
-router.use("/location", locationRouter.routes())
+router.use("/location", locationRouter.routes());
+router.use("/message", messageRouter.routes());
 
 app.use(router.routes());
 app.use((ctx: Context) => {

@@ -48,17 +48,17 @@ locationRouter.get("/all/:id", loginRequired, async ctx => {
 });
 
 locationRouter.put("/:id", loginRequired, async ctx => {
-    let object = ctx.request.body;
-    ctx.assert(object, 404, "Object Required")
+	let object = ctx.request.body;
+	ctx.assert(object, 404, "Object Required");
 
-    let original: any = await locationController.locationFind(ctx.params.id)
+	let original: any = await locationController.locationFind(ctx.params.id);
 
-    ctx.assert(original, 404, "Object Required")
+	ctx.assert(original, 404, "Object Required");
 
-    let updated: any = await original.update(ctx.request.body)
+	let updated: any = await original.update(ctx.request.body);
 
-    ctx.body = {
-        success: true,
-        updated
-    }
-})
+	ctx.body = {
+		success: true,
+		updated
+	};
+});
