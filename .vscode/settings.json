@@ -1,10 +1,4 @@
 {
-    "appService.zipIgnorePattern": [
-        "node_modules{,/**}",
-        "src{,/**}",
-        ".env"
-    ],
-    "appService.showRemoteFiles": true,
     "editor.formatOnSave": true,
     "javascript.validate.enable": false,
     "cSpell.words": [
