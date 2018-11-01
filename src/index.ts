@@ -9,6 +9,7 @@ import { errorHandler } from "./middleware/errorHandling";
 import { userRouter } from "./routes/userRoutes";
 import { locationRouter } from "./routes/locationRoutes";
 import { messageRouter } from "./routes/messageRoutes";
+import { userMessageRouter } from "./routes/userMessageRoutes";
 
 const app = new Koa();
 
@@ -44,6 +45,7 @@ const router = new Router();
 router.use("/user", userRouter.routes());
 router.use("/location", locationRouter.routes());
 router.use("/message", messageRouter.routes());
+router.use("/userMessage", userMessageRouter.routes());
 
 app.use(router.routes());
 app.use((ctx: Context) => {
