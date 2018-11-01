@@ -6,6 +6,7 @@ import { Context } from "koa";
 import Router from "koa-router";
 import bodyParser from "koa-bodyparser";
 import { errorHandler } from "./middleware/errorHandling";
+import { userRouter } from "./routes/userRoutes";
 // Import Objects for Route Calling
 
 const app = new Koa();
@@ -39,7 +40,7 @@ app.use(errorHandler);
 const router = new Router();
 
 // Add Routers
-
+router.use("/user", userRouter.routes())
 
 app.use(router.routes());
 app.use((ctx: Context) => {

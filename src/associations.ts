@@ -18,6 +18,6 @@ MessageModel.belongsToMany(UserModel, { through: UserMessageModel });
 UserModel.hasOne(LocationModel);
 LocationModel.belongsToMany(UserModel, { through: UserLocationModel });
 
-sequelize.sync({ force: true }).then(() => {
+sequelize.sync().then(() => {
 	console.log(`Database & tables created!`);
 });
