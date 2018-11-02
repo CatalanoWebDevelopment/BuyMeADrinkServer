@@ -83,15 +83,6 @@ class LocationService {
 
 		return location;
 	}
-
-	async locationUpdateTwo(userId, id, locationObj) {
-		const updatedLocation = await Location.update(
-			{ locationObj },
-			{ where: { id } }
-		);
-
-		return updatedLocation;
-	}
 }
 
 export const locationController = new LocationService();

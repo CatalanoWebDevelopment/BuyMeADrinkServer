@@ -2,12 +2,12 @@ import { sequelize } from "../db";
 const UserLocation = sequelize.import("../models/userLocation");
 
 class UserLocationService {
-	async userLocationCreate(locationObj, userId) {
+	async userLocationCreate(locationId, userId) {
 		try {
 			const createdUserLocation = await UserLocation.create({
-				locationId: locationObj.locationId,
+				locationId,
 				userId
-			})
+			});
 
 			return createdUserLocation;
 		} catch (e) {
