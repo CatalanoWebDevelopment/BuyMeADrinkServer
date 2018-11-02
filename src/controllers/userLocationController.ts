@@ -1,4 +1,5 @@
 import { sequelize } from "../db";
+import user from "../models/user";
 const UserLocation = sequelize.import("../models/userLocation");
 
 class UserLocationService {
