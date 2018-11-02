@@ -62,3 +62,14 @@ messageRouter.put("/:id", loginRequired, async ctx => {
 		updated
 	};
 });
+
+messageRouter.get("/", loginRequired, async ctx => {
+	const Messages = await messageController.messageMasterFetch(ctx.state.userId);
+
+	ctx.assert(Messages, 404, "Object Required");
+
+	ctx.body = {
+		success: true,
+		Messages
+	};
+});

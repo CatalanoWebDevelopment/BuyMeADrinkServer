@@ -1,5 +1,4 @@
 import { sequelize } from "../db";
-import { userMessageController } from "./userMessageController";
 const Message = sequelize.import("../models/message");
 
 interface ErrorWithStatus extends Error {
@@ -13,10 +12,8 @@ class MessageService {
 				comment: messageObj.comment,
 				userId: messageObj.userId
 			});
-			
-			const final = userMessageController.userMessageCreate(createdMessage.userId, createdMessage.id)
 
-			return { final, createdMessage }
+			return createdMessage;
 		} catch (e) {
 			return {
 				error: true,
@@ -76,6 +73,14 @@ class MessageService {
 		);
 
 		return updatedMessage;
+	}
+
+	async messageMasterFetch(userId) {
+		const foundMessages = await Message.findAll({
+			where: { userId }
+		});
+
+		return foundMessages;
 	}
 }
 
