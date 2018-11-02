@@ -70,20 +70,3 @@ locationRouter.get("/master/:id", loginRequired, async ctx => {
 		location
 	};
 });
-
-locationRouter.put("/two/:id", loginRequired, async ctx => {
-	let object = ctx.request.body;
-	ctx.assert(object, 404, "Object Required");
-
-	let original: any = await locationController.locationFind(ctx.params.id);
-	ctx.assert(original, 404, "Object Required");
-
-	let updated: any = await original
-		.update(ctx.request.body)
-		.setUserLocation([ctx.state.userId, ctx.params.id]);
-
-	ctx.body = {
-		success: true,
-		updated
-	};
-});
