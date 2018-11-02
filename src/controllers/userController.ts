@@ -22,9 +22,15 @@ class UserService {
 	async userCreate(userObj) {
 		try {
 			const createdUser = await User.create({
-				name: userObj.name,
+				firstName: userObj.firstName,
+				lastName: userObj.lastName,
 				email: userObj.email,
 				password: bcrypt.hashSync(userObj.password, 10),
+				gender: userObj.gender,
+				description: userObj.description,
+				profilePicture: userObj.profilePicture,
+				admin: userObj.admin,
+				interestedIn: userObj.interestedIn
 			});
 			return {
 				createdUser,
