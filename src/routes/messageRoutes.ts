@@ -5,7 +5,7 @@ import { loginRequired } from "../middleware/authentication";
 export const messageRouter = new Router();
 
 messageRouter.post("/", loginRequired, async ctx => {
-	const result = await messageController.messageCreate(ctx.request.body);
+	const result = await messageController.messageCreate(ctx.state.userId, ctx.request.body);
 
 	ctx.assert(result, 404, "Object Required");
 

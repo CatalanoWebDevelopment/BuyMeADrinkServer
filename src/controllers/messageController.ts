@@ -6,11 +6,11 @@ interface ErrorWithStatus extends Error {
 }
 
 class MessageService {
-	async messageCreate(messageObj) {
+	async messageCreate(userId, messageObj) {
 		try {
 			const createdMessage = await Message.create({
 				comment: messageObj.comment,
-				userId: messageObj.userId
+				userId
 			});
 
 			return createdMessage;

@@ -74,6 +74,24 @@ class LocationService {
 
 		return updatedLocation;
 	}
+
+	async locationMasterFetch(id) {
+		const location = await Location.findAll({
+			where: { id },
+			include: ["user"]
+		});
+
+		return location;
+	}
+
+	async locationUpdateTwo(userId, id, locationObj) {
+		const updatedLocation = await Location.update(
+			{ locationObj },
+			{ where: { id }}
+		).addUsers(userId)
+
+		return updatedLocation
+	}
 }
 
 export const locationController = new LocationService();

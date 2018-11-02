@@ -4,10 +4,10 @@ import { userLocationController } from "../controllers/userLocationController";
 
 export const userLocationRouter = new Router()
 
-userLocationRouter.post("/location/:locationId/user/:userId", loginRequired, async ctx => {
+userLocationRouter.post("/", loginRequired, async ctx => {
     const result = await userLocationController.userLocationCreate(
-        ctx.params.locationId,
-        ctx.params.userId
+        ctx.request.body,
+        ctx.state.userId
     )
 
     ctx.assert(result, 404, "Object Required")

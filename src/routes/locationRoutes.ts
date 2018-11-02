@@ -62,3 +62,24 @@ locationRouter.put("/:id", loginRequired, async ctx => {
 		updated
 	};
 });
+
+locationRouter.get("/master/:id", loginRequired, async ctx => {
+	let location = await locationController.locationMasterFetch(ctx.params.id);
+
+	ctx.body = {
+		location
+	};
+});
+
+locationRouter.put("/two/:id", loginRequired, async ctx => {
+	let updated: any = await locationController.locationUpdateTwo(
+		ctx.state.userId,
+		ctx.params.id,
+		ctx.request.body
+	);
+
+	ctx.body = {
+		success: true,
+		updated
+	};
+});

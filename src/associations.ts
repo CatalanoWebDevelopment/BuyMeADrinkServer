@@ -15,8 +15,10 @@ const UserMessageModel = sequelize.import("./models/userMessage");
 UserModel.hasMany(MessageModel);
 MessageModel.belongsToMany(UserModel, { through: UserMessageModel });
 
-UserModel.hasOne(LocationModel);
-LocationModel.belongsToMany(UserModel, { through: UserLocationModel });
+LocationModel.belongsToMany(UserModel, {
+	as: "users",
+	through: UserLocationModel
+});
 
 sequelize.sync().then(() => {
 	console.log(`Database & tables created!`);
