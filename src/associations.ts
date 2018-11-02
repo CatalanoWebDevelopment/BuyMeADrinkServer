@@ -16,7 +16,6 @@ UserModel.hasMany(MessageModel);
 MessageModel.belongsToMany(UserModel, { through: UserMessageModel });
 
 LocationModel.belongsToMany(UserModel, {
-	as: "users",
 	through: UserLocationModel
 });
 

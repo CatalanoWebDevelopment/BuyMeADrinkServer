@@ -87,10 +87,10 @@ class LocationService {
 	async locationUpdateTwo(userId, id, locationObj) {
 		const updatedLocation = await Location.update(
 			{ locationObj },
-			{ where: { id }}
-		).addUsers(userId)
+			{ where: { id } }
+		);
 
-		return updatedLocation
+		return updatedLocation;
 	}
 }
 
