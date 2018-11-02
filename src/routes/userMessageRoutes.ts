@@ -4,23 +4,19 @@ import { userMessageController } from "../controllers/userMessageController";
 
 export const userMessageRouter = new Router();
 
-userMessageRouter.post(
-	"/message/:messageId",
-	loginRequired,
-	async ctx => {
-		const result = await userMessageController.userMessageCreate(
-			ctx.params.messageId,
-			ctx.state.userId
-		);
+userMessageRouter.post("/:id", loginRequired, async ctx => {
+	const result = await userMessageController.userMessageCreate(
+		ctx.params.id,
+		ctx.state.userId
+	);
 
-		ctx.assert(result, 404, "Object Required");
+	ctx.assert(result, 404, "Object Required");
 
-		ctx.body = {
-			success: true,
-			result
-		};
-	}
-);
+	ctx.body = {
+		success: true,
+		result
+	};
+});
 
 userMessageRouter.get("/", loginRequired, async ctx => {
 	const userMessages = await userMessageController.userMessageMasterFetch(

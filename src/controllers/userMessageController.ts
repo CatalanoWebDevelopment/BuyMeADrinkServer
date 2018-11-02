@@ -4,7 +4,10 @@ const UserMessage = sequelize.import("../models/userMessage");
 class UserMessageService {
 	async userMessageCreate(messageId, userId) {
 		try {
-			const createdUserMessage = await UserMessage.create(messageId, userId);
+			const createdUserMessage = await UserMessage.create({
+				messageId,
+				userId
+			});
 
 			return createdUserMessage;
 		} catch (e) {
