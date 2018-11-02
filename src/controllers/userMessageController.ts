@@ -1,5 +1,5 @@
 import { sequelize } from "../db";
-const UserMessage = sequelize.import("../models/message");
+const UserMessage = sequelize.import("../models/userMessage");
 
 class UserMessageService {
 	async userMessageCreate(messageId, userId) {

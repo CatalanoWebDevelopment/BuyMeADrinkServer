@@ -5,12 +5,12 @@ import { userMessageController } from "../controllers/userMessageController";
 export const userMessageRouter = new Router();
 
 userMessageRouter.post(
-	"/message/:messageId/user/:userId",
+	"/message/:messageId",
 	loginRequired,
 	async ctx => {
 		const result = await userMessageController.userMessageCreate(
 			ctx.params.messageId,
-			ctx.params.userId
+			ctx.state.userId
 		);
 
 		ctx.assert(result, 404, "Object Required");
@@ -22,9 +22,9 @@ userMessageRouter.post(
 	}
 );
 
-userMessageRouter.get("/:userId", loginRequired, async ctx => {
+userMessageRouter.get("/", loginRequired, async ctx => {
 	const userMessages = await userMessageController.userMessageMasterFetch(
-		ctx.params.userId
+		ctx.state.userId
 	);
 
 	ctx.assert(userMessages, 404, "Object Required");
