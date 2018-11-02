@@ -10,6 +10,7 @@ import { userRouter } from "./routes/userRoutes";
 import { locationRouter } from "./routes/locationRoutes";
 import { messageRouter } from "./routes/messageRoutes";
 import { userMessageRouter } from "./routes/userMessageRoutes";
+import { userLocationRouter } from "./routes/userLocationRoutes";
 
 const app = new Koa();
 
@@ -46,6 +47,7 @@ router.use("/user", userRouter.routes());
 router.use("/location", locationRouter.routes());
 router.use("/message", messageRouter.routes());
 router.use("/userMessage", userMessageRouter.routes());
+router.use("/userLocation", userLocationRouter.routes());
 
 app.use(router.routes());
 app.use((ctx: Context) => {
