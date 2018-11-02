@@ -1,10 +1,6 @@
 import { sequelize } from "../db";
 const UserMessage = sequelize.import("../models/message");
 
-interface ErrorWithStatus extends Error {
-	status?: number;
-}
-
 class UserMessageService {
 	async userMessageCreate(messageId, userId) {
 		try {
