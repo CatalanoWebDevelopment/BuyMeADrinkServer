@@ -18,7 +18,8 @@ class UserService {
 		);
 	}
 
-	async userCreate(userObj) {
+	async userCreate(userObj, file) {
+		console.log("FILE", file);
 		try {
 			const createdUser = await User.create({
 				firstName: userObj.firstName,
@@ -27,7 +28,7 @@ class UserService {
 				password: bcrypt.hashSync(userObj.password, 10),
 				gender: userObj.gender,
 				description: userObj.description,
-				profilePicture: userObj.profilePicture,
+				profilePicture: file.url,
 				admin: userObj.admin,
 				interestedIn: userObj.interestedIn
 			});

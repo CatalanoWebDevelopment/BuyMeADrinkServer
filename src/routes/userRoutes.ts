@@ -3,7 +3,7 @@ import Router from "koa-router";
 import { userController } from "../controllers/userController";
 import { loginRequired } from "../middleware/authentication";
 
-const multer = require("multer");
+const multer = require("koa-multer");
 const cloudinary = require("cloudinary");
 const cloudinaryStorage = require("multer-storage-cloudinary");
 
@@ -23,8 +23,11 @@ let parser = multer({ storage: storage });
 
 export const userRouter = new Router();
 
-userRouter.post("/register", parser.array("images", 5), async ctx => {
-	const result = await userController.userCreate(ctx.request.body);
+userRouter.post("/register", parser.single("image"), async ctx => {
+	const result = await userController.userCreate(
+		ctx.request.body,
+		ctx.request.file
+	);
 
 	ctx.body = {
 		success: true,
