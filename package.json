@@ -19,6 +19,7 @@
   "private": false,
   "dependencies": {
     "bcrypt": "^3.0.2",
+    "cloudinary": "^1.11.0",
     "dotenv": "^6.1.0",
     "jsonwebtoken": "^8.3.0",
     "koa": "^2.6.1",
@@ -26,6 +27,8 @@
     "koa-jwt": "^3.5.1",
     "koa-router": "^7.4.0",
     "koa-session": "^5.10.0",
+    "multer": "^1.4.1",
+    "multer-storage-cloudinary": "^2.2.1",
     "pg": "^7.6.0",
     "pg-hstore": "^2.3.2",
     "prettier": "^1.14.3",

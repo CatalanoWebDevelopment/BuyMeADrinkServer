@@ -1,5 +1,4 @@
 import { sequelize } from "../db";
-
 const User = sequelize.import("../models/user");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -106,7 +105,7 @@ class UserService {
 	}
 
 	async userFindAll() {
-		const foundUsers = await User.findAll()
+		const foundUsers = await User.findAll();
 
 		if (!foundUsers) {
 			const e: ErrorWithStatus = new Error("No Users Within Account");

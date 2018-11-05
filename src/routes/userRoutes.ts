@@ -1,10 +1,29 @@
+require("dotenv").config();
 import Router from "koa-router";
 import { userController } from "../controllers/userController";
 import { loginRequired } from "../middleware/authentication";
 
+const multer = require("multer");
+const cloudinary = require("cloudinary");
+const cloudinaryStorage = require("multer-storage-cloudinary");
+
+cloudinary.config({
+	cloud_name: process.env.CLOUD_NAME,
+	api_key: process.env.CLOUD_KEY,
+	api_secret: process.env.CLOUD_SECRET
+});
+
+let storage = cloudinaryStorage({
+	cloudinary: cloudinary,
+	folder: "BuyMeADrinkProfilePictures",
+	allowedFormats: ["jpg", "jpeg", "png"]
+});
+
+let parser = multer({ storage: storage });
+
 export const userRouter = new Router();
 
-userRouter.post("/register", async ctx => {
+userRouter.post("/register", parser.array("images", 5), async ctx => {
 	const result = await userController.userCreate(ctx.request.body);
 
 	ctx.body = {
